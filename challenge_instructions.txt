@@ -1,0 +1,28 @@
+Problem: You have a dataset of car images, taken from surveillance cameras, you need to develop a system that generates groups of similar images (you are free to decide which feature of the cars you will use). The system must automatically generate groups, where the elements inside each group share the feature selected.
+
+You can use any technique you want. There are no restrictions, we are interested on watching what is your best solution for this problem.
+ 
+Considerations:
+Image dataset to use is located on an Azure Blob Storage service. To download it, follow:
+Connect through sftp to the blob storage: stdatalabelling.techchallenge.techchallenge@stdatalabelling.blob.core.windows.net
+Enter the password asked: NICKUeWQuX+O815kMn8BIgcx5rDHJCNA
+Download the image_test.tar.gz file to your local machine
+For example, you could group the images by using any of the following features (if you find another that is not in the list, feel free to generate those groups):
+Color of the car (black, green, blue, etc.)
+Orientation of the car (front-view, back-view, side-view, etc.)
+Type of the car (SUV, sedan, hatchback, etc.)
+
+Bonus 1: Optimize the model to be deployed to production with better performance metrics on latency and throughput. Include the latency and throughput improvements in the report.
+
+Bonus 2: Deploy the model to a production-like environment (TorchServe, Triton, BentoML), etc. In the report, explain your decisions and the benefits of deploying the model the way you did it.
+
+Upload your code, and a report of the solution, to a GitHub repository. Remember to use good coding practices, as well as good code contribution practices (branch naming, commits, etc.). 
+
+Evaluation
+We will evaluate the following points:
+How well did you analyze the problem, and what decisions did you take to solve it
+How good are you explaining your results
+Good coding and contribution practices
+Creativity in your solution
+Expertise in deploying models to production
+Your skills to do research and apply them to real-world problems
