@@ -4,6 +4,11 @@ import torch
 import random
 from argument import args
 from hungarian_match import hungarian_evaluate, confusion_matrix
+import numpy as np
+from sklearn import metrics
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+
 
 def extract_class(file_name):
     """ Extracts class from the file name. """
@@ -48,6 +53,28 @@ def save_stats(clustering_stats, stats_path):
     """ Saves clustering statistics to a file. """
     with open(stats_path, 'w') as file:
         file.write(str(clustering_stats))
+
+def evaluate_clustering_performance(data, labels):
+    """
+    Evaluates the clustering performance using different metrics.
+    
+    :param data: array-like, shape (n_samples, n_features)
+        The input data samples to be clustered.
+    :param labels: array-like, shape (n_samples,)
+        The labels of the clusters.
+    :return: dict
+        A dictionary containing the evaluation metrics.
+    """
+    silhouette_score = metrics.silhouette_score(data, labels)
+    calinski_harabasz_score = metrics.calinski_harabasz_score(data, labels)
+    davies_bouldin_score = metrics.davies_bouldin_score(data, labels)
+
+    return {
+        "Silhouette Score": silhouette_score,
+        "Calinski-Harabasz Index": calinski_harabasz_score,
+        "Davies-Bouldin Index": davies_bouldin_score
+    }
+
 
 def main():
     file_names = os.listdir(args.image_folder)
