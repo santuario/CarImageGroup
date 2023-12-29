@@ -1,0 +1,7 @@
+flask
+requests
+torch==1.10.0
+transformers
+Pillow
+tqdm
+python-dotenv

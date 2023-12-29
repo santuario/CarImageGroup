@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ALGOTIVE KlusterCar App</title>
+    <style>
+        #drop_zone {
+            border: 3px dashed #ccc;
+            padding: 50px;
+            text-align: center;
+            margin: 20px;
+        }
+        #spinner {
+            display: none;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>ALGOTIVE KlusterCar App</h1>
+    <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);">
+        <p>Drag one vehicle image to this Drop Zone ...</p>
+        <div id="spinner" class="hidden">
+            <img src="images/spinner.gif" alt="Loading..."/> <!-- You need to include a spinner.gif in your project -->
+        </div>
+    </div>
+    <div id="imageContainer"></div>
+    <ul id="responseList" class="hidden"></ul>
+    <script>
+
+        // Function to update the drop zone text
+        function updateDropZoneText(text) {
+            $("#drop_zone p").text(text);
+        }
+
+        function dropHandler(ev) {
+            console.log('File(s) dropped');
+            ev.preventDefault();
+            toggleSpinner(true);
+            updateDropZoneText("Processing..."); // Update text when file is dropped
+    
+            
+            if (ev.dataTransfer.items) {
+                for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                    if (ev.dataTransfer.items[i].kind === 'file') {
+                        var file = ev.dataTransfer.items[i].getAsFile();
+                        console.log('... file[' + i + '].name = ' + file.name);
+                        uploadFile(file);
+                    }
+                }
+            }
+        }
+
+        function dragOverHandler(ev) {
+            console.log('File(s) in drop zone');
+            ev.preventDefault();
+            updateDropZoneText("Release to upload"); // Update text during drag over
+
+        }
+
+        // Add this function to handle the `dragleave` event
+        function dragLeaveHandler(ev) {
+            console.log('File(s) left the drop zone');
+            ev.preventDefault();
+            updateDropZoneText("Drag one vehicle image to this Drop Zone ..."); // Update text when file leaves the drop zone
+        }
+
+        function uploadFile(file) {
+            var formData = new FormData();
+            formData.append('image', file);
+
+            // Create a Blob URL for the image
+            var imageUrl = URL.createObjectURL(file);
+
+            $.ajax({
+                url: '/analyze-image',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    toggleSpinner(false);
+                    displayResponse(response, imageUrl); // Pass the Blob URL to displayResponse
+                },
+                error: function(response) {
+                    toggleSpinner(false);
+                    $('#responseList').addClass('hidden').empty();
+                    alert('Error: ' + response.responseText);
+                }
+            });
+        }
+
+        function toggleSpinner(show) {
+            var spinner = $('#spinner');
+            if (show) {
+                spinner.removeClass('hidden');
+            } else {
+                spinner.addClass('hidden');
+            }
+        }
+
+        function displayResponse(response, imageUrl) {
+            var list = $('#responseList').empty();
+            var imageContainer = $('#imageContainer').empty(); // Make sure you have an element with id="imageContainer"
+
+            // Create an img element and set the src to the blob URL of the uploaded image
+            var img = $('<img />', { 
+                id: 'uploadedImage',
+                src: imageUrl,
+                alt: 'Uploaded Image',
+                width: '200px' // You can set the width or height as you prefer
+            });
+
+            imageContainer.append(img);
+
+            // Clean up the response to remove extra characters
+            var jsonString = response.description.replace(/```json|```/g, '').trim();
+            var parsedResponse = JSON.parse(jsonString);
+            for (var key in parsedResponse) {
+                if (parsedResponse.hasOwnProperty(key)) {
+                    var li = $('<li></li>').text(key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ') + ': ' + parsedResponse[key]);
+                    list.append(li);
+                }
+            }
+            list.removeClass('hidden');
+            updateDropZoneText("Drag one image to this Drop Zone ..."); // Reset text after displaying response
+
+        }
+
+        // And initially set the text when the page loads
+        updateDropZoneText("Drag one vehicle image to this Drop Zone ...");
+
+    </script>
+</body>
+</html>
