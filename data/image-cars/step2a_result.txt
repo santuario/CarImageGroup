@@ -1,0 +1,3 @@
+Image file-/Users/santuario/Documents/Projects/Andela/data/image-cars/0361_c010_00073525_0.jpg; Answer: white
+Image file-/Users/santuario/Documents/Projects/Andela/data/image-cars/0365_c011_00086755_0.jpg; Answer: white
+Image file-/Users/santuario/Documents/Projects/Andela/data/image-cars/0368_c001_00062020_0.jpg; Answer: white

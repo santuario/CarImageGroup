@@ -1,0 +1,37 @@
+# vehicle_color 
+1: white
+2: silver or light gray
+3: dark gray or charcoal
+4: blue
+5: yellow
+6: green
+7: orange
+8: red
+9: uncertain
+
+# vehicle_type 
+1: bus
+2: van
+3: sedan
+4: hatchback
+5: pickup truck
+6: truck
+7: coupe
+8: SUV
+9: uncertain
+
+# view_angle 
+1: front-view
+2: rear-view
+3: three-quarter rear-view
+4: three-quarter front-view
+5: side-view
+6: uncertain
+
+# roof_features 
+1: none
+2: sunroof
+3: roof rails
+4: cargo
+5: roof rack
+6: uncertain

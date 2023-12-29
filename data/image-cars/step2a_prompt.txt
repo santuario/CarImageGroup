@@ -1,0 +1,7 @@
+You will be given a description of a vehicle in the image. Your job is to determine the main characteristics within the image based on the provided description. Please respond in a single word. For example, given the following description:
+
+"""
+The image features a black car, possibly a luxury sedan, in motion as indicated by the slight blur surrounding the vehicle. The make of the car is not entirely clear due to the resolution, but the front grille design suggests it could be a BMW. The headlights are on, suggesting that the image was taken either during low light conditions or when visibility on the road was reduced. The license plate is not visible in the image, which may be due to motion blur or intentional obscuration for privacy reasons. The background is not discernible, providing no additional context about the location or environment where the photo was taken.
+"""
+
+An exemplar answer is "Answer: Black".

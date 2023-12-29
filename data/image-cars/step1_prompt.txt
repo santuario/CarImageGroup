@@ -1,0 +1,1 @@
+Provide a brief description of the vehicle in the given image.
