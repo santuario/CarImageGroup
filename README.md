@@ -49,33 +49,33 @@ The methodology we employed to tackle the image clustering challenge is a testam
 
 ### 1. Image Description Extraction
 
-The process begins with `visual_insight_generator.py`, a script that utilizes Salesforce's BLIP-2 model to extract detailed textual descriptions from vehicle images. This Vision-Language Model (VLM) skillfully interprets the visual content of each image, converting it into rich, descriptive text. The script iterates over images in a specified folder, translating each image into a narrative, which is then saved in JSONL format for further processing. Its efficient error management and dynamic path management make it adaptable for various systems, transforming static images into narratives ready for clustering.
-
 _Script:_ `visual_insight_generator.py`
+
+The process begins with `visual_insight_generator.py`, a script that utilizes Salesforce's BLIP-2 model to extract detailed textual descriptions from vehicle images. This Vision-Language Model (VLM) skillfully interprets the visual content of each image, converting it into rich, descriptive text. The script iterates over images in a specified folder, translating each image into a narrative, which is then saved in JSONL format for further processing. Its efficient error management and dynamic path management make it adaptable for various systems, transforming static images into narratives ready for clustering.
 
 ### 2. Label Derivation
 
-Next, the `label_generator.py script takes these descriptive texts and converts them into actionable data. It uses two powerful language models, GPT for general text generation and LLAMA for specialized prompts, to analyze the image descriptions and distill them into concise labels. This script is pivotal in bridging the gap between raw descriptions and clustered data, ensuring that the labels are not only accurate but relevant for the clustering process. The output is an organized set of labels, each a condensed version of the image's story, prepared for the clustering phase.
-
 _Script:_ `label_generator.py`
+
+Next, the `label_generator.py` script takes these descriptive texts and converts them into actionable data. It uses two powerful language models, GPT for general text generation and LLAMA for specialized prompts, to analyze the image descriptions and distill them into concise labels. This script is pivotal in bridging the gap between raw descriptions and clustered data, ensuring that the labels are not only accurate but relevant for the clustering process. The output is an organized set of labels, each a condensed version of the image's story, prepared for the clustering phase.
 
 ### 3. Label Clustering
 
-The `label_clustering.py script then organizes these labels into coherent groups. It filters the labels to include only the most relevant ones for clustering, using either GPT or LLAMA models based on the setup. This script is designed to understand the context and nuances of each label, grouping them into classes that represent distinct groups of vehicle images. Its adaptability, dynamic environment variable loading, and robust model version handling ensure efficient and reliable clustering.
-
 _Script:_ `label_clustering.py`
+
+The `label_clustering.py` script then organizes these labels into coherent groups. It filters the labels to include only the most relevant ones for clustering, using either GPT or LLAMA models based on the setup. This script is designed to understand the context and nuances of each label, grouping them into classes that represent distinct groups of vehicle images. Its adaptability, dynamic environment variable loading, and robust model version handling ensure efficient and reliable clustering.
 
 ### 4. Image Classification
 
-In this step, `image_classifier.py assigns each image to a cluster based on the derived labels. The script reads the initial descriptions and prompts the language model to classify the images into the appropriate clusters. Its methodical approach, including efficient data handling and dynamic configuration, ensures that each image is accurately categorized based on its features. This classification transforms abstract labels into tangible groupings of images, ready for practical use or further analysis.
-
 _Script:_ `image_classifier.py`
+
+In this step, `image_classifier.py` assigns each image to a cluster based on the derived labels. The script reads the initial descriptions and prompts the language model to classify the images into the appropriate clusters. Its methodical approach, including efficient data handling and dynamic configuration, ensures that each image is accurately categorized based on its features. This classification transforms abstract labels into tangible groupings of images, ready for practical use or further analysis.
 
 ### 5. Performance Evaluation
 
-Finally, the `performance_evaluator.py` script assesses the accuracy and effectiveness of the clustering process. It compares the classified images with pre-defined classes, using the Hungarian Matching algorithm for a precise evaluation of clustering performance. The script calculates statistical measures like silhouette score and Calinski-Harabasz index, providing a comprehensive assessment of the clustering quality. The result is a detailed performance report, highlighting the system's strengths and potential areas for improvement.
-
 _Script:_ `performance_evaluator.py`
+
+Finally, the `performance_evaluator.py` script assesses the accuracy and effectiveness of the clustering process. It compares the classified images with pre-defined classes, using the Hungarian Matching algorithm for a precise evaluation of clustering performance. The script calculates statistical measures like silhouette score and Calinski-Harabasz index, providing a comprehensive assessment of the clustering quality. The result is a detailed performance report, highlighting the system's strengths and potential areas for improvement.
 
 ## 📗 Results
 
