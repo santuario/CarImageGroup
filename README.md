@@ -49,59 +49,31 @@ The methodology we employed to tackle the image clustering challenge is a testam
 
 ### 1. Image Description Extraction
 
-The journey of our ALGOTIVE KlusterCar App begins with the insightful extraction of vehicle narratives from raw pixels. Our script, `visual_insight_generator.py`, harnesses the power of Salesforce's BLIP-2 (Bridging Language and Image Pre-training) model, a cutting-edge Vision-Language Model (VLM). The model is adept at generating rich textual descriptions that capture the nuanced features of each vehicle image in the dataset.
-
-The script functions by iterating over images in a specified folder, each time invoking the BLIP-2 model to interpret the visual content and translate it into a descriptive text. The process is meticulous and handled with precision, thanks to the script's error management and progress tracking through tqdm. The generated descriptions are saved in a JSONL format, paving the way for the subsequent clustering and classification steps.
-
-The use of environment variables and dynamic path management ensures that the script is adaptable and can be integrated seamlessly into different systems or workflows. Through this script, images are no longer just static data but stories waiting to be grouped into meaningful chapters.
+The process begins with `visual_insight_generator.py`, a script that utilizes Salesforce's BLIP-2 model to extract detailed textual descriptions from vehicle images. This Vision-Language Model (VLM) skillfully interprets the visual content of each image, converting it into rich, descriptive text. The script iterates over images in a specified folder, translating each image into a narrative, which is then saved in JSONL format for further processing. Its efficient error management and dynamic path management make it adaptable for various systems, transforming static images into narratives ready for clustering.
 
 _Script:_ `visual_insight_generator.py`
 
 ### 2. Label Derivation
 
-With a trove of descriptive texts in hand from our first step, the `label_generator.py` script comes into play. This script is the bridge between raw descriptions and actionable data, translating verbose narratives into concise labels suitable for clustering. It employs two potent language models — GPT for general-purpose text generation and LLAMA for specialized prompts — to analyze and abstract the key features from the previously generated image descriptions.
-
-The script's process is twofold: it reads the detailed descriptions and then, depending on whether we're using GPT or LLAMA, sends them to the respective language model. This dual-model strategy ensures that our labels are not just accurate but also relevant to the clustering criteria.
-
-The output is a clean, organized set of labels that serve as the DNA for the forthcoming clustering phase. Each label is a condensed version of the image's story, ready to be categorized into a family of similar tales. The script's efficiency and precision are amplified by its use of environment variables and dynamic API management, allowing for seamless integration into our clustering workflow.
+Next, the `label_generator.py script takes these descriptive texts and converts them into actionable data. It uses two powerful language models, GPT for general text generation and LLAMA for specialized prompts, to analyze the image descriptions and distill them into concise labels. This script is pivotal in bridging the gap between raw descriptions and clustered data, ensuring that the labels are not only accurate but relevant for the clustering process. The output is an organized set of labels, each a condensed version of the image's story, prepared for the clustering phase.
 
 _Script:_ `label_generator.py`
 
 ### 3. Label Clustering
 
-Once we have our raw labels ready, it's time for the `label_clustering.py` script to shine. This script performs the crucial task of organizing these labels into coherent groups, setting the stage for efficient image categorization.
-
-The script begins by filtering the labels to ensure only the most relevant and frequently occurring ones are considered for clustering. It then employs either GPT or LLAMA models, depending on the setup, to analyze these labels and cluster them based on the specified number of classes. This process is not just about grouping similar labels; it's about understanding the context and nuances of each label and how they relate to each other in the grand scheme of our clustering criteria.
-
-One of the key features of this script is its adaptability. It dynamically loads environment variables and adjusts its processing based on the model version used. In cases where the standard model encounters limitations, the script smartly falls back to a more capable model version, ensuring robustness and reliability in clustering.
-
-The final output of this script is a set of clustered labels, each representing a distinct group of vehicle images based on the chosen feature. This output is a testament to the script's ability to transform a collection of individual labels into a meaningful and structured classification scheme.
+The `label_clustering.py script then organizes these labels into coherent groups. It filters the labels to include only the most relevant ones for clustering, using either GPT or LLAMA models based on the setup. This script is designed to understand the context and nuances of each label, grouping them into classes that represent distinct groups of vehicle images. Its adaptability, dynamic environment variable loading, and robust model version handling ensure efficient and reliable clustering.
 
 _Script:_ `label_clustering.py`
 
 ### 4. Image Classification
 
-Following the clustering of labels, the next pivotal step in our ALGOTIVE KlusterCar App is the `image_classifier.py` script. This script is tasked with the critical job of assigning each image to one of the previously determined clusters based on its descriptive features.
-
-The script operates by first extracting the classes from the labels. It then reads through the initial answers - the detailed descriptions of each image - and prompts the language model (either GPT or LLAMA, based on the configuration) to classify these images. The model is asked to determine which cluster each image belongs to, based on its description.
-
-What makes this script particularly efficient is its methodical approach to handling large volumes of data, courtesy of tqdm for progress tracking, and its dynamic environment variable loading for model configuration. The script ensures that each image is carefully analyzed and accurately placed into the most fitting category, considering all the nuanced details captured in the description.
-
-The final outcome is a neatly organized set of images, each assigned to a cluster that best represents its key characteristics, as interpreted by the AI models. This step is crucial as it transforms our abstract labels into tangible groupings of similar images, ready for any practical application or further analysis.
+In this step, `image_classifier.py assigns each image to a cluster based on the derived labels. The script reads the initial descriptions and prompts the language model to classify the images into the appropriate clusters. Its methodical approach, including efficient data handling and dynamic configuration, ensures that each image is accurately categorized based on its features. This classification transforms abstract labels into tangible groupings of images, ready for practical use or further analysis.
 
 _Script:_ `image_classifier.py`
 
 ### 5. Performance Evaluation
 
-The final chapter in our ALGOTIVE KlusterCar App's journey is encapsulated by the `performance_evaluator.py` script. This script is designed to rigorously assess the accuracy and effectiveness of our clustering process.
-
-It begins by loading the final answers (i.e., the classified images) and compares them with a set of pre-defined classes to ensure correctness. In cases where there's a mismatch, the script intelligently assigns a random but plausible class, maintaining the integrity of the dataset.
-
-A key component of this evaluation is the application of the Hungarian Matching algorithm, which provides an accurate assessment of the clustering performance. The script calculates various statistics like silhouette score, Calinski-Harabasz index, and Davies-Bouldin index, offering a comprehensive view of the clustering quality.
-
-Additionally, the script employs KMeans clustering to generate sample data and labels for further validation. This approach allows for a thorough comparison between the predicted and true labels, enabling us to measure the system's accuracy, precision, and overall efficiency.
-
-The result is a detailed report, saved as `accuracy.txt`, which outlines the clustering's effectiveness in various statistical terms. This evaluation is crucial, as it not only validates our model's capability but also highlights areas for potential improvement in future iterations.
+Finally, the `performance_evaluator.py` script assesses the accuracy and effectiveness of the clustering process. It compares the classified images with pre-defined classes, using the Hungarian Matching algorithm for a precise evaluation of clustering performance. The script calculates statistical measures like silhouette score and Calinski-Harabasz index, providing a comprehensive assessment of the clustering quality. The result is a detailed performance report, highlighting the system's strengths and potential areas for improvement.
 
 _Script:_ `performance_evaluator.py`
 
