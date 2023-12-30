@@ -110,7 +110,7 @@ _Script:_ `performance_evaluator.py`
 The system exhibited high accuracy and outperformed baseline methods in clustering images based on various text criteria. Detailed results and performance metrics for View Angle are provided, showcasing the system's effectiveness.
 
 <div align="center">
-  <img src="./figures/View-Angle-Clusters.png" alt="View Angle Metrics" width="100"/>
+  <img src="./figures/View-Angle-Clusters.png" alt="View Angle Metrics" width="980"/>
 </div>
 
 | Metric                  | Value   | Interpretation                                                                                                                                                                    |
