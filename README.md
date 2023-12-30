@@ -29,7 +29,7 @@ This visual summary underscores the app's proficiency in interpreting and sortin
 
 ## 🔍 Problem Statement
 
-In the bustling intersections of modern cities, surveillance cameras are the ever-watchful eyes, capturing every moment on the streets. Among the myriad of images collected, vehicles of all shapes and colors zip through the frame, each with a story to tell. The challenge we faced was not just to make sense of this vehicular mosaic but to bring order to the chaos. How do we group these mechanical marvels, not by the loudness of their horns or the brightness of their headlights, but by features that can be described in words? The ALGOTIVE KlusterCar App rises to the occasion, clustering with a clever textual twist, where traditional algorithms merely spin their wheels.
+The challenge was to develop a system capable of clustering a dataset of car images from surveillance cameras based on various features such as color, orientation, and car type. The solution needed to include an automated process for grouping with the flexibility to use different features as criteria. **The ALGOTIVE KlusterCar App rises to the occasion, clustering with a clever textual twist, where traditional algorithms merely spin their wheels.**
 
 ## 💬 Solution Approach
 
@@ -55,27 +55,27 @@ The process begins with `visual_insight_generator.py`, a script that utilizes Sa
 
 ### 2. Label Derivation
 
-_Script:_ `label_generator.py`
+_Script:_ `predictive_label_analyzer.py`
 
-Next, the `label_generator.py` script takes these descriptive texts and converts them into actionable data. It uses two powerful language models, GPT for general text generation and LLAMA for specialized prompts, to analyze the image descriptions and distill them into concise labels. This script is pivotal in bridging the gap between raw descriptions and clustered data, ensuring that the labels are not only accurate but relevant for the clustering process. The output is an organized set of labels, each a condensed version of the image's story, prepared for the clustering phase.
+Next, the `predictive_label_analyzer.py` script takes these descriptive texts and converts them into actionable data. It uses two powerful language models, GPT for general text generation and LLAMA for specialized prompts, to analyze the image descriptions and distill them into concise labels. This script is pivotal in bridging the gap between raw descriptions and clustered data, ensuring that the labels are not only accurate but relevant for the clustering process. The output is an organized set of labels, each a condensed version of the image's story, prepared for the clustering phase.
 
 ### 3. Label Clustering
 
-_Script:_ `label_clustering.py`
+_Script:_ `cluster_label_aggregator.py`
 
-The `label_clustering.py` script then organizes these labels into coherent groups. It filters the labels to include only the most relevant ones for clustering, using either GPT or LLAMA models based on the setup. This script is designed to understand the context and nuances of each label, grouping them into classes that represent distinct groups of vehicle images. Its adaptability, dynamic environment variable loading, and robust model version handling ensure efficient and reliable clustering.
+The `cluster_label_aggregator.py` script then organizes these labels into coherent groups. It filters the labels to include only the most relevant ones for clustering, using either GPT or LLAMA models based on the setup. This script is designed to understand the context and nuances of each label, grouping them into classes that represent distinct groups of vehicle images. Its adaptability, dynamic environment variable loading, and robust model version handling ensure efficient and reliable clustering.
 
 ### 4. Image Classification
 
-_Script:_ `image_classifier.py`
+_Script:_ `classifier.py`
 
-In this step, `image_classifier.py` assigns each image to a cluster based on the derived labels. The script reads the initial descriptions and prompts the language model to classify the images into the appropriate clusters. Its methodical approach, including efficient data handling and dynamic configuration, ensures that each image is accurately categorized based on its features. This classification transforms abstract labels into tangible groupings of images, ready for practical use or further analysis.
+In this step, `classifier.py` assigns each image to a cluster based on the derived labels. The script reads the initial descriptions and prompts the language model to classify the images into the appropriate clusters. Its methodical approach, including efficient data handling and dynamic configuration, ensures that each image is accurately categorized based on its features. This classification transforms abstract labels into tangible groupings of images, ready for practical use or further analysis.
 
 ### 5. Performance Evaluation
 
-_Script:_ `performance_evaluator.py`
+_Script:_ `measuring_acc.py`
 
-Finally, the `performance_evaluator.py` script assesses the accuracy and effectiveness of the clustering process. It compares the classified images with pre-defined classes, using the Hungarian Matching algorithm for a precise evaluation of clustering performance. The script calculates statistical measures like silhouette score and Calinski-Harabasz index, providing a comprehensive assessment of the clustering quality. The result is a detailed performance report, highlighting the system's strengths and potential areas for improvement.
+Finally, the `measuring_acc.py` script assesses the accuracy and effectiveness of the clustering process. It compares the classified images with pre-defined classes, using the Hungarian Matching algorithm for a precise evaluation of clustering performance. The script calculates statistical measures like silhouette score and Calinski-Harabasz index, providing a comprehensive assessment of the clustering quality. The result is a detailed performance report, highlighting the system's strengths and potential areas for improvement.
 
 ## 📗 Results
 
@@ -95,7 +95,9 @@ Based on these metrics, we can conclude that the clustering algorithm performed 
 
 ## 🛠 Deployment
 
-The model is optimized for production deployment, focusing on improving latency and throughput. A Docker app, as demonstrated in the provided screenshot, is used for the production-like environment, taking advantage of its containerization features for easy scalability and replication.
+Our model is optimized for production deployment, with a focus on enhancing both latency and throughput. The deployment is containerized using Docker, which is running on Google Cloud Platform (GCP). Leveraging the powerful computing capabilities of a Tesla T4 GPU, the app delivers accelerated performance that is well-suited for handling complex image processing tasks in real-time.
+
+By deploying on GCP with a Tesla T4 GPU, we ensure that the application can efficiently manage high workloads while maintaining fast response times, crucial for image analysis tasks. The use of Docker also facilitates ease of scalability and replication, allowing us to maintain a consistent and reliable service as the app scales.
 
 <div align="center">
   <img src="./figures/App-1.png" alt="Sample image of working App" width="980"/>
@@ -105,7 +107,7 @@ The ALGOTIVE KlusterCar App is deployed with a robust backend service that inclu
 
 ### API Endpoint: `/analyze-image`
 
-This endpoint accepts `POST` requests containing an image file and returns a JSON response with the classified features of the vehicle in the image.
+This endpoint accepts `POST` requests containing an image file and returns a JSON response with the clustered and then classified features of the vehicle in the image.
 
 #### Request
 
@@ -143,6 +145,7 @@ Further optimization strategies are being considered to reduce this latency, inc
 - Refactoring the code to improve efficiency.
 - Upgrading server hardware or increasing bandwidth.
 - Implementing asynchronous processing to handle requests more quickly.
+- Exploring the use of Kubernetes to orchestrate container deployment, scaling, and management, further improving the reliability and scalability of our application.
 
 ## 📃 Repository Structure
 
