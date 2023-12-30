@@ -14,6 +14,19 @@ Experience the ease of clustering vehicle images with our intuitive drag-and-dro
 
 This innovative clustering solution is designed for the automatic grouping of vehicle images obtained from surveillance camera footage. By employing the synergy of vision-language models (VLMs) and large language models (LLMs), we follow the IC|TC: Image Clustering Conditioned on Text Criteria that introduces a novel approach to image clustering [(arXiv link)](https://arxiv.org/abs/2310.18297). It not only prioritizes accuracy but also user-defined flexibility, allowing for the grouping of images based on a variety of text-based features such as color, orientation, and vehicle type. The system is capable of adapting to different features, showcasing a versatile application in the realm of automated surveillance and data organization.
 
+Our approach showcases its capability in the sample image below, where various vehicle images are automatically classified into distinct categories. The system identifies and groups vehicles based on:
+
+- **Vehicle Color**: Examples include silver, black, red, and yellow.
+- **Vehicle Type**: Categorization into types such as buses, pickups, trucks, and SUVs.
+- **View Angle**: Classifying the viewpoint of the vehicle image, such as three-quarter front-view, front-view, three-quarter rear-view, and rear-view.
+- **Roof Features**: Classifying the roof such as sunroof, roof rails, cargho, etc.
+
+This visual summary underscores the app's proficiency in interpreting and sorting images based on the extracted features, demonstrating a high level of accuracy and detail in its classification process.
+
+<div align="center">
+  <img src="./figures/Label-Summary.png" alt="Summary of vehicle labels" width="980"/>
+</div>
+
 ## 🔍 Problem Statement
 
 In the bustling intersections of modern cities, surveillance cameras are the ever-watchful eyes, capturing every moment on the streets. Among the myriad of images collected, vehicles of all shapes and colors zip through the frame, each with a story to tell. The challenge we faced was not just to make sense of this vehicular mosaic but to bring order to the chaos. How do we group these mechanical marvels, not by the loudness of their horns or the brightness of their headlights, but by features that can be described in words? The ALGOTIVE KlusterCar App rises to the occasion, clustering with a clever textual twist, where traditional algorithms merely spin their wheels.
@@ -141,12 +154,11 @@ A successful request returns a `200 OK` status with a JSON payload containing th
 - `src/`: Holds the source code for the project, with scripts for each step of the clustering and classification process.
 - `utils/`: Provides utility scripts and functions that support the main processes, like argument parsing and LLM interaction utilities.
 - `challenge_instructions.txt`: Instructions or notes regarding the image clustering challenge.
-- `classifier.py`: The script responsible for the classification step in the clustering process (STEP 4).
-- `cluster_label_aggregator.py`: Handles the aggregation of labels into clusters (STEP 3).
-- `measuring_acc.py`: Evaluates the clustering accuracy and other performance metrics (STEP 5).
-- `predictive_label_analyzer.py`: Analyzes and predicts labels for the images (STEP 2).
-- `pyproject.toml`: A configuration file for Python projects, which may specify dependencies and project settings.
 - `visual_insight_generator.py`: Generates descriptive insights from images (STEP 1).
+- `predictive_label_analyzer.py`: Analyzes and predicts labels for the images (STEP 2).
+- `cluster_label_aggregator.py`: Handles the aggregation of labels into clusters (STEP 3).
+- `classifier.py`: The script responsible for the classification step in the clustering process (STEP 4).
+- `measuring_acc.py`: Evaluates the clustering accuracy and other performance metrics (STEP 5).
 
 ## 🤓 Contributions
 
