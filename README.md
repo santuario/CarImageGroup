@@ -16,10 +16,10 @@ This innovative clustering solution is designed for the automatic grouping of ve
 
 Our approach showcases its capability in the sample image below, where various vehicle images are automatically classified into distinct categories. The system identifies and groups vehicles based on:
 
-- **Vehicle Color**: Examples include silver, black, red, and yellow.
-- **Vehicle Type**: Categorization into types such as buses, pickups, trucks, and SUVs.
-- **View Angle**: Classifying the viewpoint of the vehicle image, such as three-quarter front-view, front-view, three-quarter rear-view, and rear-view.
-- **Roof Features**: Classifying the roof such as sunroof, roof rails, cargho, etc.
+- **Vehicle Color**: Examples include white, silver, black, dark gray, blue, yellow, green, orange and red.
+- **Vehicle Type**: Categorization into types such as bus, van, sedan, hatchback, pickup, truck, coupe and SUV.
+- **View Angle**: Classifying the viewpoint of the vehicle image, such as front-view, rear-view, three-quarter rear-view, three-quarter front-view and side-view.
+- **Roof Features**: Classifying the roof such as none, sunroof, roof rails, cargo or roof rack.
 
 This visual summary underscores the app's proficiency in interpreting and sorting images based on the extracted features, demonstrating a high level of accuracy and detail in its classification process.
 
