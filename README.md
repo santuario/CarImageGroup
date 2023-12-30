@@ -1,4 +1,4 @@
-# ALGOTIVE KlusterCar App: Sorting Vehicles Images with a Textual Twist
+# ALGOTIVE KlusterCar App 🚗: Sorting Vehicles Images with a Textual Twist
 
 Try the live app here: [ALGOTIVE KlusterCar App](https://algotive-kluster-cars-v1-5rxxsuinqa-zf.a.run.app/)
 
@@ -8,15 +8,27 @@ Experience the ease of clustering vehicle images with our intuitive drag-and-dro
   <img src="./figures/Video-Recording-2.gif" alt="Sample video of working App" width="980"/>
 </div>
 
-## Overview
+## 📕 Overview
 
 This innovative clustering solution is designed for the automatic grouping of vehicle images obtained from surveillance camera footage. By employing the synergy of vision-language models (VLMs) and large language models (LLMs), we follow the IC|TC: Image Clustering Conditioned on Text Criteria that introduces a novel approach to image clustering [(arXiv link)](https://arxiv.org/abs/2310.18297). It not only prioritizes accuracy but also user-defined flexibility, allowing for the grouping of images based on a variety of text-based features such as color, orientation, and vehicle type. The system is capable of adapting to different features, showcasing a versatile application in the realm of automated surveillance and data organization.
 
-## Problem Statement
+## 🔍 Problem Statement
 
 In the bustling intersections of modern cities, surveillance cameras are the ever-watchful eyes, capturing every moment on the streets. Among the myriad of images collected, vehicles of all shapes and colors zip through the frame, each with a story to tell. The challenge we faced was not just to make sense of this vehicular mosaic but to bring order to the chaos. How do we group these mechanical marvels, not by the loudness of their horns or the brightness of their headlights, but by features that can be described in words? The ALGOTIVE KlusterCar App rises to the occasion, clustering with a clever textual twist, where traditional algorithms merely spin their wheels.
 
-## Solution Approach
+## 💬 Solution Approach
+
+1️⃣ **Image Description Extraction**: We began by extracting comprehensive descriptions for each image using advanced VLMs. This process transformed visual data into descriptive text, laying the groundwork for further analysis.
+
+2️⃣ **Label Derivation**: With the image descriptions in hand, we then utilized LLMs to intelligently generate labels. These labels distilled the essence of each image into textual features that could be used for clustering.
+
+3️⃣ **Label Clustering**: The derived labels were grouped using LLMs, allowing us to organize the dataset into a predetermined number of clusters. This step involved fine-tuning the models to balance the granularity and coherence of the groupings.
+
+4️⃣ **Image Classification**: Post-clustering, the images were categorized according to the groupings, ensuring that each cluster was homogenous in terms of the selected feature.
+
+5️⃣ **Performance Evaluation**: To quantify the efficacy of our system, we employed the Hungarian Matching algorithm, which provided us with metrics such as Accuracy, Adjusted Rand Index (ARI), and Normalized Mutual Information (NMI).
+
+## 💬🖍 Detailed Solution Approach
 
 The methodology we employed to tackle the image clustering challenge is a testament to the versatility and power of combining different AI domains. Here's an in-depth look at our approach:
 
@@ -78,11 +90,11 @@ The result is a detailed report, saved as `accuracy.txt`, which outlines the clu
 
 _Script:_ `performance_evaluator.py`
 
-## Results
+## 📗 Results
 
 The system exhibited high accuracy and outperformed baseline methods in clustering images based on various text criteria. Detailed results and performance metrics are provided, showcasing the system's effectiveness.
 
-## Deployment
+## 🛠 Deployment
 
 The model is optimized for production deployment, focusing on improving latency and throughput. A Docker app, as demonstrated in the provided screenshot, is used for the production-like environment, taking advantage of its containerization features for easy scalability and replication.
 
@@ -90,7 +102,7 @@ The model is optimized for production deployment, focusing on improving latency 
   <img src="./figures/App-1.png" alt="Sample image of working App" width="980"/>
 </div>
 
-## Repository Structure
+## 📃 Repository Structure
 
 - `data/`: Contains the dataset of car images used for model training and evaluation.
 - `deployment/`: Contains the necessary files and scripts for deploying the model, including Docker configuration files.
@@ -105,15 +117,15 @@ The model is optimized for production deployment, focusing on improving latency 
 - `pyproject.toml`: A configuration file for Python projects, which may specify dependencies and project settings.
 - `visual_insight_generator.py`: Generates descriptive insights from images (STEP 1).
 
-## Contributions
+## 🤓 Contributions
 
 We followed best practices in coding and repository contributions, including descriptive commit messages and well-organized scripts.
 
-## Research and Creativity
+## 🤯 Research and Creativity
 
 This project stands out for its novel use of text criteria in image clustering and the creative application of language models to derive meaningful image groupings.
 
-## Acknowledgements
+## 💚 Acknowledgements
 
 This project, ALGOTIVE KlusterCar App, draws inspiration from the groundbreaking work detailed in "Image Clustering Conditioned on Text Criteria" by Sehyun Kwon, Jaeseung Park, Minkyu Kim, Jaewoong Cho, Ernest K. Ryu, and Kangwook Lee. The paper provides a solid foundation for our approach and has been instrumental in guiding our methodology.
 
