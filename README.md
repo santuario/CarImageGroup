@@ -113,11 +113,11 @@ The system exhibited high accuracy and outperformed baseline methods in clusteri
   <img src="./figures/View-Angle-Clusters.png" alt="View Angle Metrics" width="980"/>
 </div>
 
-| Metric                  | Value   | Interpretation                                                                                                                                                                    |
-| ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Silhouette Score        | 0.716   | Indicates strong cohesion and separation; vehicle images are well-grouped by view angle.                                                                                          |
-| Calinski-Harabasz Index | 9878.39 | Higher values mean clusters are dense and well separated, suggesting tight grouping within view angle clusters and clear distinction between them.                                |
-| Davies-Bouldin Index    | 0.400   | Lower values indicate better clustering; implies that clusters are well separated from each other, and the algorithm has effectively distinguished between different view angles. |
+| Metric                  | Value | Interpretation                                                                                                                                                                    |
+| ----------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Silhouette Score        | 0.627 | Indicates strong cohesion and separation; vehicle images are well-grouped by view angle.                                                                                          |
+| Calinski-Harabasz Index | 55161 | Higher values mean clusters are dense and well separated, suggesting tight grouping within view angle clusters and clear distinction between them.                                |
+| Davies-Bouldin Index    | 0.52  | Lower values indicate better clustering; implies that clusters are well separated from each other, and the algorithm has effectively distinguished between different view angles. |
 
 Based on these metrics, we can conclude that the clustering algorithm performed well in segmenting the vehicle images by their view angles, with clear differentiation between the various views. This suggests that the approach used is effective for this particular application.
 
