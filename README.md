@@ -158,6 +158,20 @@ A successful request returns a `200 OK` status with a JSON payload containing th
 }
 ```
 
+### API Endpoint Performance
+
+During testing, our `/analyze-image` endpoint exhibited an response time of **3.91 seconds**. This metric reflects the latency from the instant a POST request with an image is sent to the server to the moment a response is received.
+
+#### Latency:
+
+- **Response Time**: The API endpoint has an average latency of 3.91 seconds. While this may be suitable for non-time-critical applications, efforts to optimize the server's response time are ongoing to enhance the user experience for more time-sensitive use cases.
+
+Further optimization strategies are being considered to reduce this latency, including but not limited to:
+
+- Refactoring the code to improve efficiency.
+- Upgrading server hardware or increasing bandwidth.
+- Implementing asynchronous processing to handle requests more quickly.
+
 ## 📃 Repository Structure
 
 - `data/`: Contains the dataset of car images used for model training and evaluation.
