@@ -1,8 +1,10 @@
 # ALGOTIVE KlusterCar App 🚗: Sorting Vehicles Images with a Textual Twist
 
-Try the live app here: [ALGOTIVE KlusterCar App](https://algotive-kluster-cars-v1-5rxxsuinqa-zf.a.run.app/)
+## 📣 Try
 
 Experience the ease of clustering vehicle images with our intuitive drag-and-drop interface. Simply drag an image into the designated drop zone and let our AI-powered system analyze and sort the vehicle based on its visual and textual features, such as color, type, and orientation.
+
+- Live App here: [ALGOTIVE KlusterCar App](https://algotive-kluster-cars-v1-5rxxsuinqa-zf.a.run.app/)
 
 <div align="center">
   <img src="./figures/Video-Recording-2.gif" alt="Sample video of working App" width="980"/>
@@ -101,6 +103,35 @@ The model is optimized for production deployment, focusing on improving latency 
 <div align="center">
   <img src="./figures/App-1.png" alt="Sample image of working App" width="980"/>
 </div>
+
+The ALGOTIVE KlusterCar App is deployed with a robust backend service that includes an API endpoint for image analysis. Below is the documentation for using the API:
+
+### API Endpoint: `/analyze-image`
+
+This endpoint accepts `POST` requests containing an image file and returns a JSON response with the classified features of the vehicle in the image.
+
+#### Request
+
+- **Method**: `POST`
+- **Endpoint**: `/analyze-image`
+- **Content-Type**: `multipart/form-data`
+- **Body**:
+  - `image`: The image file to be analyzed.
+
+#### Response
+
+A successful request returns a `200 OK` status with a JSON payload containing the classified features of the vehicle. If the request does not contain an image or another error occurs, it will return a `400 Bad Request` status with an error message.
+
+##### Example Response:
+
+```json
+{
+  "vehicle_color": "yellow",
+  "vehicle_type": "truck",
+  "view_angle": "front-view",
+  "roof_features": "none"
+}
+```
 
 ## 📃 Repository Structure
 
