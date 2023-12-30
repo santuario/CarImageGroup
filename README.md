@@ -107,7 +107,19 @@ _Script:_ `performance_evaluator.py`
 
 ## 📗 Results
 
-The system exhibited high accuracy and outperformed baseline methods in clustering images based on various text criteria. Detailed results and performance metrics are provided, showcasing the system's effectiveness.
+The system exhibited high accuracy and outperformed baseline methods in clustering images based on various text criteria. Detailed results and performance metrics for View Angle are provided, showcasing the system's effectiveness.
+
+<div align="center">
+  <img src="./figures/View-Angle-Clusters.png" alt="View Angle Metrics" width="100"/>
+</div>
+
+| Metric                  | Value   | Interpretation                                                                                                                                                                    |
+| ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Silhouette Score        | 0.716   | Indicates strong cohesion and separation; vehicle images are well-grouped by view angle.                                                                                          |
+| Calinski-Harabasz Index | 9878.39 | Higher values mean clusters are dense and well separated, suggesting tight grouping within view angle clusters and clear distinction between them.                                |
+| Davies-Bouldin Index    | 0.400   | Lower values indicate better clustering; implies that clusters are well separated from each other, and the algorithm has effectively distinguished between different view angles. |
+
+Based on these metrics, we can conclude that the clustering algorithm performed well in segmenting the vehicle images by their view angles, with clear differentiation between the various views. This suggests that the approach used is effective for this particular application.
 
 ## 🛠 Deployment
 
